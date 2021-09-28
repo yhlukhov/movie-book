@@ -1,4 +1,5 @@
 import ReactDOM from 'react-dom'
+import 'typeface-montserrat'
 import { App } from './App'
 import { ErrorBoundary } from './ErrorBoundary'
 
