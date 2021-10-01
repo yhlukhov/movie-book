@@ -2,7 +2,7 @@ import { LogoDiv } from './styled'
 
 export const Logo = () => {
   return(
-    <LogoDiv>
+    <LogoDiv className='logo'>
       <span>netflix</span>roulette
     </LogoDiv>
   )

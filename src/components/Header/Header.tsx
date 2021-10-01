@@ -1,4 +1,4 @@
-import { Logo } from './Logo'
+import { Logo } from '../common/Logo'
 import { AddMovie } from './AddMovie'
 import { SearchBar } from './SearchBar'
 import { HeaderDiv } from './styled'

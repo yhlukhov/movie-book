@@ -1,19 +1,14 @@
-import styled from 'styled-components'
-import { Header } from './components/Header'
+import { Body } from './components/body/Body'
+import { Footer } from './components/footer/Footer'
+import { Header } from './components/header'
+import { AppDiv } from './styled'
 
 export const App = () => {
   return (
     <AppDiv>
       <Header />
+      <Body />
+      <Footer />
     </AppDiv>
   )
 }
-
-const AppDiv = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 100vh;
-  font-family: 'Montserrat';
-  background-color: #555555;
-`

@@ -1,5 +1,6 @@
 import styled from 'styled-components'
-import mainBanner from '../../assets/img/main_banner.png'
+import mainBanner from '../../assets/img/main-banner.png'
+import { colorPalette } from '../common/styled'
 
 export const HeaderDiv = styled.div`
   position: relative;
@@ -8,26 +9,18 @@ export const HeaderDiv = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  flex: none;
   background-image: url(${mainBanner});
-`
-
-export const LogoDiv = styled.div`
-  position: absolute;
-  top: 20px;
-  left: 60px;
-  color: #f65261;
-  cursor: default;
-  font-family: Montserrat;
-  font-size: 20px;
-  font-weight: 500;
-  & span {
-    font-weight: 900;
+  & .logo {
+    position: absolute;
+    top: 30px;
+    left: 60px;
   }
 `
 
 export const AddBtn = styled.button`
   position: absolute;
-  top: 20px;
+  top: 25px;
   right: 60px;
   height: 46px;
   width: 177px;
@@ -38,7 +31,7 @@ export const AddBtn = styled.button`
   font-size: 20px;
   text-transform: uppercase;
   font-weight: 600;
-  color: #f65261;
+  color: ${colorPalette.red};
   background-color: #606060a0;
 `
 
@@ -86,5 +79,5 @@ export const SearchButton = styled.button`
   font-size: 20px;
   text-transform: uppercase;
   color: white;
-  background: #f65261;
+  background: ${colorPalette.red}; 
 `

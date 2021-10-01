@@ -6,7 +6,7 @@ export const SearchBar = () => {
 
   const handleSearch = (e:FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    console.log(input)
+    alert(`Search: ${input}`)
   }
 
   return (
