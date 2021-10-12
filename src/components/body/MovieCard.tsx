@@ -1,8 +1,9 @@
-import { FC, useRef, useState } from 'react'
+import { FC, useState } from 'react'
 import { MovieType } from '../../types'
 import ContextMenu from './modals/ContextMenu'
 import { MovieCardDiv } from './styled'
 import MovieFormModal from './modals/MovieFormModal'
+import DeleteMovieModal from './modals/DeleteMovieModal'
 
 type PropsType = {
   movie: MovieType
@@ -11,7 +12,8 @@ type PropsType = {
 export const MovieCard: FC<PropsType> = ({ movie }) => {
   const [contextOpen, setContextOpen] = useState(false)
   const [formOpen, setFormOpen] = useState(false)
-  const cardRef = useRef()
+  const [deleteOpen, setDeleteOpen] = useState(false)
+
   return (
     <MovieCardDiv>
       <img className='picture' src={movie.imageUrl} alt={movie.title} />
@@ -23,8 +25,9 @@ export const MovieCard: FC<PropsType> = ({ movie }) => {
         <div className='movie-year'>{movie.releaseDate.getFullYear()}</div>
       </div>
       <div className='menu' onClick={()=>setContextOpen(prev => !prev)}>...</div>
-      {contextOpen && <ContextMenu movie={movie} setOpen={setContextOpen} setFormOpen={setFormOpen} /> }
-      {formOpen && <MovieFormModal isOpen={formOpen} handleClose={()=>setFormOpen(false)} edit={true} movie={movie}/>}
+      {contextOpen && <ContextMenu movie={movie} setOpen={setContextOpen} setFormOpen={setFormOpen} setDeleteOpen={setDeleteOpen} /> }
+      {formOpen && <MovieFormModal handleClose={()=>setFormOpen(false)} edit={true} movie={movie}/>}
+      {deleteOpen && <DeleteMovieModal id={movie.id} handleClose={()=>setDeleteOpen(false)} />}
     </MovieCardDiv>
   )
 }

@@ -47,7 +47,6 @@ export const SortByLabel = styled.label`
     background-position: right;
     background-repeat: no-repeat;
     border: none;
-    font-family: Montserrat;
     font-size: 16px;
     font-weight: 500;
     letter-spacing: 0.9;

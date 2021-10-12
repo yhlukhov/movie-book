@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { MdClose } from 'react-icons/md'
+import { BiCheck } from 'react-icons/bi'
 import { colorPalette } from '../../common/styled'
 import { Form } from 'formik'
 
@@ -115,25 +116,6 @@ export const Input = styled.div`
   }
 `
 
-export const CloseBtn = styled(MdClose)`
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  width: 35px;
-  height: 35px;
-  cursor: pointer;
-  color: white;
-`
-export const CloseBtnSm = styled(MdClose)`
-  position: absolute;
-  top: 5px;
-  right: 5px;
-  width: 18px;
-  height: 18px;
-  cursor: pointer;
-  color: white;
-`
-
 export const StyledForm = styled(Form)`
   & .input-area {
     display: flex;
@@ -152,11 +134,13 @@ export const StyledForm = styled(Form)`
     & button {
       height: 57px;
       width: 182px;
+      margin-left: 20px;
       border-radius: 4px;
       border: 2px solid ${colorPalette.red};
       font-size: 20px;
       font-weight: 500;
       text-transform: uppercase;
+      cursor: pointer;
     }
     & .reset {
       color: ${colorPalette.red};
@@ -167,4 +151,67 @@ export const StyledForm = styled(Form)`
       background-color: ${colorPalette.red};
     }
   }
+`
+
+export const DeleteDialog = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  & p {
+    width: 100%;
+    font-size: 20px;
+    padding-bottom: 30px;
+  }
+  & button {
+    height: 57px;
+    width: 182px;
+    border-radius: 4px;
+    font-size: 20px;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: ${colorPalette.white};
+    background-color: ${colorPalette.red};
+  }
+`
+
+export const CongratDialog = styled.div`
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  & h2 {
+    padding-top: 30px;
+  }
+  & p {
+    font-family: Montserrat;
+    font-size: 20px;
+  }
+  & svg {
+    margin: 0 auto;
+  }
+`
+
+export const CloseBtn = styled(MdClose)`
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+  color: white;
+`
+export const CloseBtnSm = styled(MdClose)`
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  color: white;
+`
+export const CheckIcon = styled(BiCheck)`
+  width: 66px;
+  height: 66px;
+  color: white;
+  border-radius: 50%;
+  background-color: ${colorPalette.red};
 `

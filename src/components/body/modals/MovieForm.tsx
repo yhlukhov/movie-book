@@ -15,9 +15,10 @@ const dateToString = (date:Date) => {
 type PropsType = {
   edit?: boolean
   movie?: MovieType
+  handleClose: Function
 }
 
-const MovieForm: FC<PropsType> = ({ edit, movie }) => {
+const MovieForm: FC<PropsType> = ({ edit, movie, handleClose }) => {
   const initialValues =
     edit && movie
       ? {
@@ -44,7 +45,8 @@ const MovieForm: FC<PropsType> = ({ edit, movie }) => {
       validationSchema={movieSchema}
       onSubmit={async (values) => {
         await new Promise((r) => setTimeout(r, 200))
-        alert(JSON.stringify(values, null, 2))
+        console.log(values)
+        handleClose(true)
       }}
     >
       {({ handleReset }) => (

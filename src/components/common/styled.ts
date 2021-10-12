@@ -11,7 +11,6 @@ export enum colorPalette {
 export const LogoDiv = styled.div`
   color: ${colorPalette.red};
   cursor: default;
-  font-family: Montserrat;
   font-size: 20px;
   font-weight: 500;
   & span {

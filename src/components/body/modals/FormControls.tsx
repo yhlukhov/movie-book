@@ -28,12 +28,12 @@ type DatePickerProps = {
 }
 
 //   Text Input Field
-export const TextField: FC<TextFieldProps> = ({ label, type, name, placeholder }) => {
-  const [field, meta] = useField(name)
+export const TextField: FC<TextFieldProps> = ({ label, ...props }) => {
+  const [field, meta] = useField(props)
   return (
     <Input>
       <label>{label}</label>
-      <Field name={name} type={type} placeholder={placeholder} />
+      <input {...field} {...props} />
       {meta.error && meta.touched && <div className='error'>{meta.error}</div>}
     </Input>
   )

@@ -7,27 +7,33 @@ export const HeaderDiv = styled.div`
   width: 1200px;
   height: 396px;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  flex: none;
+  flex-direction: column;
   background-image: url(${mainBanner});
-  & .logo {
-    position: absolute;
-    top: 30px;
-    left: 60px;
+  & .top {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 60px;
+    & .top-right {
+      display: flex;
+      align-items: center;
+      & .login-url {
+        font-size: 22px;
+        font-weight: 500;
+        padding: 5px;
+        margin-right: 20px;
+        cursor: pointer;
+        color: ${colorPalette.red};
+      }
+    }
   }
 `
 
 export const AddBtn = styled.button`
-  position: absolute;
-  top: 25px;
-  right: 60px;
   height: 46px;
   width: 177px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  font-family: Montserrat;
   font-size: 20px;
   text-transform: uppercase;
   font-weight: 600;
@@ -36,21 +42,19 @@ export const AddBtn = styled.button`
 `
 
 export const Title = styled.div`
-  position: absolute;
-  top: 115px;
-  left: 110px;
-  font-family: Montserrat;
+  margin-top: 57px;
   font-size: 40px;
   font-weight: 200;
   letter-spacing: 1px;
   color: white;
+  text-align: center;
   text-transform: uppercase;
   cursor: default;
 `
 
 export const Form = styled.form`
   display: flex;
-  align-items: center;
+  justify-content: center;
   margin-top: 30px;
 `
 
@@ -61,7 +65,6 @@ export const SearchInput = styled.input`
   padding-left: 20px;
   border: none;
   border-radius: 4px;
-  font-family: Montserrat;
   font-size: 20px;
   font-weight: 400;
   color: white;

@@ -3,11 +3,11 @@ import { CloseBtn, ModalContainerDiv, ModalDiv } from './styled'
 
 type PropsType = {
   title: string
-  isOpen: boolean
+  // isOpen: boolean
   handleClose: Function
 }
 
-const ModalContainer: FC<PropsType> = ({ title, isOpen, handleClose, children }) => {
+const ModalContainer: FC<PropsType> = ({ title, handleClose, children }) => {
   const modalRef = useRef<HTMLDivElement>(null)
 
   const onClose = (e: MouseEvent<HTMLDivElement>) => {
@@ -18,11 +18,11 @@ const ModalContainer: FC<PropsType> = ({ title, isOpen, handleClose, children })
 
   const keyPress = useCallback(
     (e) => {
-      if (e.key === 'Escape' && isOpen) {
+      if (e.key === 'Escape') {
         handleClose()
       }
     },
-    [isOpen, handleClose]
+    [handleClose]
   )
 
   useEffect(() => {
@@ -31,17 +31,13 @@ const ModalContainer: FC<PropsType> = ({ title, isOpen, handleClose, children })
   })
 
   return (
-    <>
-      {isOpen && (
-        <ModalContainerDiv ref={modalRef} onClick={(e) => onClose(e)}>
-          <ModalDiv>
-            <h2>{title}</h2>
-            <CloseBtn onClick={() => handleClose()} />
-            {children}
-          </ModalDiv>
-        </ModalContainerDiv>
-      )}
-    </>
+    <ModalContainerDiv ref={modalRef} onClick={(e) => onClose(e)}>
+      <ModalDiv>
+        <h2>{title}</h2>
+        <CloseBtn onClick={() => handleClose()} />
+        {children}
+      </ModalDiv>
+    </ModalContainerDiv>
   )
 }
 
