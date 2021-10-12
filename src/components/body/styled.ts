@@ -63,7 +63,6 @@ export const MovieCardDiv = styled.div`
     font-size: 22px;
     font-weight: bold;
     letter-spacing: 2px;
-    padding-right: 2px;
     writing-mode: vertical-rl;
     border: 1px solid transparent;
     border-radius: 50%;
@@ -78,5 +77,28 @@ export const MovieCardDiv = styled.div`
   }
   &:hover& .menu {
     opacity: 0.7;
+  }
+`
+
+export const ContextMenuDiv = styled.div`
+  position: absolute;
+  top: 50px;
+  right: 50px;
+  width: 190px;
+  text-align:right;
+  border-radius: 4px;
+  padding:5px;
+  padding-top: 25px;
+  background-color: ${colorPalette.black};
+  & .btn {
+    width: 100%;
+    height: 30px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding-left: 15px;
+    &:hover {
+      background-color: ${colorPalette.red};
+    }
   }
 `

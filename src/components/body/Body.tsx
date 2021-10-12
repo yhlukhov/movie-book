@@ -1,6 +1,6 @@
 import { ControlBar } from './ControlBar/ControlBar'
 import { MovieList } from './MovieList'
-import { IMovieCard } from '../../types/MovieCard'
+import { MovieType } from '../../types/MovieCard'
 import { BodyDiv } from './styled'
 
 import pulpFiction from '../../assets/img/movieCardImg/PulpFiction.png'
@@ -10,72 +10,77 @@ import inception from '../../assets/img/movieCardImg/Inception.png'
 import killBill from '../../assets/img/movieCardImg/KillBillVol2.png'
 import reservior from '../../assets/img/movieCardImg/Reservoirdogs.png'
 
-
-const movies: IMovieCard[] = [
+const movies: MovieType[] = [
   {
     id: '1',
     title: 'Pulp Fiction',
     description: 'Pulp Fiction',
-    genre: ['Action & Adventure'],
-    year: 2010,
-    time: '1h 30m',
-    rate: 4.6,
+    genre: ['comedy', 'horror'],
+    releaseDate: new Date(2010, 11, 20),
+    runtime: 90,
+    rating: 4.6,
+    movieUrl: 'https://movie.url.com',
     imageUrl: pulpFiction,
   },
   {
     id: '2',
     title: 'Bohemian Rhapsody',
     description: 'Bohemian Rhapsody',
-    genre: ['Drama'],
-    year: 2010,
-    time: '1h 30m',
-    rate: 4.6,
+    genre: ['crime'],
+    releaseDate: new Date(2010, 11, 20),
+    runtime: 90,
+    rating: 4.6,
+    movieUrl: 'https://movie.url.com',
     imageUrl: bohemian,
   },
   {
     id: '3',
     title: 'Kill Bill: Vol 2',
     description: 'Kill Bill: Vol 2',
-    genre: ['Oscar winning Movie'],
-    year: 2010,
-    time: '1h 30m',
-    rate: 4.6,
+    genre: ['documentary', 'comedy'],
+    releaseDate: new Date(2010, 11, 20),
+    runtime: 90,
+    rating: 4.6,
+    movieUrl: 'https://movie.url.com',
     imageUrl: killBill,
   },
   {
     id: '4',
     title: 'Avengers: War of Infinity',
     description: 'Avengers: War of Infinity',
-    genre: ['Action & Adventure'],
-    year: 2010,
-    time: '1h 30m',
-    rate: 4.6,
+    genre: ['horror'],
+    releaseDate: new Date(2010, 11, 20),
+    runtime: 90,
+    rating: 4.6,
+    movieUrl: 'https://movie.url.com',
     imageUrl: avengers,
   },
   {
     id: '5',
     title: 'Inception',
     description: 'Inception',
-    genre: ['Action & Adventure'],
-    year: 2010,
-    time: '1h 30m',
-    rate: 4.6,
+    genre: ['comedy'],
+    releaseDate: new Date(2010, 11, 20),
+    runtime: 90,
+    rating: 4.6,
+    movieUrl: 'https://movie.url.com',
     imageUrl: inception,
   },
   {
     id: '6',
     title: 'Reservoir dogs',
     description: 'Reservoir dogs',
-    genre: ['Oscar winning Movie'],
-    year: 2010,
-    time: '1h 30m',
-    rate: 4.6,
+    genre: ['crime', 'documentary'],
+    releaseDate: new Date(2010, 11, 20),
+    runtime: 90,
+    rating: 4.6,
+    movieUrl: 'https://movie.url.com',
     imageUrl: reservior,
   },
 ]
 
 export const Body = () => {
-  return(
+  return (
     <BodyDiv>
       <ControlBar />
       <MovieList movies={movies} />

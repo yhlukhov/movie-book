@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { GenreItemLabel, GenreSelectDiv } from './styled'
-const genreList = ['all', 'documentary', 'comedy', 'horror', 'crime']
+import { genreList } from '../../../types'
 
 export const GenreSelect = () => {
   const [genre, setGenre] = useState('all')
@@ -20,7 +20,7 @@ export const GenreSelect = () => {
 
   return (
     <GenreSelectDiv>
-      {renderGenreSelect(genreList)}
+      {renderGenreSelect(['all', ...genreList])} 
     </GenreSelectDiv>
   )
 }

@@ -6,7 +6,10 @@ export const SortBy = () => {
   return(
     <SortByLabel htmlFor="sortBy">
       <span>Sort By</span>
-      <select name="sortBy" id="sortBy" onChange={(e)=>setSortBy(e.target.value)}>
+      <select name="sortBy" id="sortBy" onChange={(e)=>{
+        setSortBy(e.target.value)
+        console.log(sortBy)
+      }}>
         <option value="Date">RELEASE DATE</option>
         <option value="Rating">RATING</option>
         <option value="Title">TITLE</option>

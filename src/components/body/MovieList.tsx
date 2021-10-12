@@ -1,11 +1,11 @@
 import { MovieCard } from './MovieCard'
-import { IMovieCard } from '../../types'
+import { MovieType } from '../../types'
 import { FC } from 'react'
 import { MovieListDiv } from './styled'
 import { MovieCount } from './MovieCount'
 
 interface PropsType {
-  movies: IMovieCard[]
+  movies: MovieType[]
 }
 
 export const MovieList: FC<PropsType> = ({ movies }) => {
