@@ -1,18 +1,25 @@
-import { useState } from 'react'
+import { FC } from 'react'
 import { SortByLabel } from './styled'
+import { sotrTypes } from '../../../types'
 
-export const SortBy = () => {
-  const [sortBy, setSortBy] = useState('Date')
-  return(
-    <SortByLabel htmlFor="sortBy">
+type SortByProps = {
+  setSortType: Function
+}
+
+export const SortBy: FC<SortByProps> = ({ setSortType }) => {
+  return (
+    <SortByLabel htmlFor='sortBy'>
       <span>Sort By</span>
-      <select name="sortBy" id="sortBy" onChange={(e)=>{
-        setSortBy(e.target.value)
-        console.log(sortBy)
-      }}>
-        <option value="Date">RELEASE DATE</option>
-        <option value="Rating">RATING</option>
-        <option value="Title">TITLE</option>
+      <select
+        name='sortBy'
+        id='sortBy'
+        onChange={(e) => {
+          setSortType(e.target.value)
+        }}
+      >
+        {Object.values(sotrTypes).map((type) => (
+          <option value={type} key={type}>{type}</option>
+        ))}
       </select>
     </SortByLabel>
   )

@@ -23,6 +23,9 @@ export const MovieCard: FC<PropsType> = ({ movie }) => {
           <div className='movie-genre'>{movie.genre.join(', ')}</div>
         </div>
         <div className='movie-year'>{movie.releaseDate.getFullYear()}</div>
+        <div className="rating">
+          {movie.rating}
+        </div>
       </div>
       <div className='menu' onClick={()=>setContextOpen(prev => !prev)}>...</div>
       {contextOpen && <ContextMenu movie={movie} setOpen={setContextOpen} setFormOpen={setFormOpen} setDeleteOpen={setDeleteOpen} /> }

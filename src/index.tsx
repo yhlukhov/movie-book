@@ -1,7 +1,7 @@
 import ReactDOM from 'react-dom'
-import 'typeface-montserrat'
+import { ErrorBoundary } from './components/common'
 import { App } from './App'
-import { ErrorBoundary } from './components/common/ErrorBoundary'
+import 'typeface-montserrat'
 
 const AppContainer = () => (
   <ErrorBoundary>

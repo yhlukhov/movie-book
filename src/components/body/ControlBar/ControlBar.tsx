@@ -1,12 +1,17 @@
+import { FC } from 'react'
 import { GenreSelect } from './GenreSelect'
 import { SortBy } from './SortBy'
 import { ControlDiv } from './styled'
 
-export const ControlBar = () => {
+type ControlBarProps = {
+  setSortType:Function
+}
+
+export const ControlBar:FC<ControlBarProps> = ({setSortType}) => {
   return(
     <ControlDiv>
       <GenreSelect />
-      <SortBy />
+      <SortBy setSortType={setSortType} />
     </ControlDiv>
   )
 }

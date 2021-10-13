@@ -5,6 +5,7 @@ import { MovieType } from '../../../types'
 import { DatePicker, SelectArea, TextArea, TextField } from './FormControls'
 import { genreList, GenreType } from '../../../types/MovieCard'
 import { StyledForm } from './styled'
+
 const dateToString = (date:Date) => {
   const yyyy = date.getFullYear()
   const mm = date.getMonth()

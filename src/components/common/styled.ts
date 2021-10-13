@@ -17,3 +17,12 @@ export const LogoDiv = styled.div`
     font-weight: 900;
   }
 `
+
+export const ErrorSection = styled.section`
+  width: 100%;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 22px;
+`

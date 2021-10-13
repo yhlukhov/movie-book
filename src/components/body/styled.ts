@@ -52,6 +52,19 @@ export const MovieCardDiv = styled.div`
     border: 1px solid #979797;
     border-radius: 5px;
   }
+  & .rating {
+    position: absolute;
+    bottom: 85px;
+    right: 10px;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    border: 1px solid #979797;
+    background-color: #42424280; 
+  }
   & .menu {
     position: absolute;
     top: 20px;

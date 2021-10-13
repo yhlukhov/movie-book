@@ -6,7 +6,7 @@ import { TextField } from './FormControls'
 
 type LoginFormProps = {}
 
-const LoginForm: FC<LoginFormProps> = ({}) => {
+const LoginForm: FC<LoginFormProps> = () => {
   return (
     <Formik
       initialValues={{
