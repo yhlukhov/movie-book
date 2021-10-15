@@ -24,3 +24,4 @@ export const SortBy: FC<SortByProps> = ({ setSortType }) => {
     </SortByLabel>
   )
 }
+

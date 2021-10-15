@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState,  } from 'react'
 import { ControlBar } from './ControlBar/ControlBar'
 import { MovieList } from './MovieList'
 import { MovieType } from '../../types/MovieCard'

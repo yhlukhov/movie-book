@@ -2,7 +2,8 @@ import { FC } from 'react'
 import { MovieCard } from './MovieCard'
 import { MovieCount } from './MovieCount'
 import { MovieListDiv } from './styled'
-import { MovieType, sort } from '../../types'
+import { MovieType } from '../../types'
+import { sort } from '../../utilities'
 
 interface PropsType {
   movies: MovieType[]

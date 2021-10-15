@@ -1,5 +1,5 @@
-import { MovieType } from '.';
-import { sotrTypes } from './ControlBar'
+import { MovieType } from '../types';
+import { sotrTypes } from '../types/ControlBar'
 
 export const compareByTitle = (a:MovieType, b:MovieType) => {
   if (a.title > b.title) {
@@ -26,6 +26,7 @@ export const compareByRating = (a:MovieType, b:MovieType) => {
 }
 
 export const sort = (array:Array<any>, sortBy:string) => {
+  console.log('sort by:', sortBy)
   switch (sortBy) {
     case sotrTypes.releaseDate:
       array.sort(compareByReleaseDate)
