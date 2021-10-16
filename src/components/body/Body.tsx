@@ -1,7 +1,7 @@
 import { useState,  } from 'react'
 import { ControlBar } from './ControlBar/ControlBar'
 import { MovieList } from './MovieList'
-import { MovieType } from '../../types/MovieCard'
+import { MovieType, GenreType } from '../../types/MovieCard'
 import { BodyDiv } from './styled'
 
 import pulpFiction from '../../assets/img/movieCardImg/PulpFiction.png'
@@ -83,10 +83,11 @@ const movies: MovieType[] = [
 
 export const Body = () => {
   const [sortType, setSortType] = useState(sotrTypes.releaseDate )
+  const [filterBy, setFilterBy] = useState('all' as GenreType|'all')
   return (
     <BodyDiv>
-      <ControlBar setSortType={setSortType} />
-      <MovieList movies={movies} sortBy={sortType} />
+      <ControlBar setSortType={setSortType} setFilterBy={setFilterBy} />
+      <MovieList movies={movies} sortBy={sortType} genre={filterBy} />
     </BodyDiv>
   )
 }

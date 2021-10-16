@@ -4,7 +4,7 @@ import MovieForm from './MovieForm'
 import { MovieType } from '../../../types'
 
 type PropsType = {
-  handleClose: Function
+  handleClose: (success?: boolean | undefined)=>void
   edit?:boolean
   movie?:MovieType
 }

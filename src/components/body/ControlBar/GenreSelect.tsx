@@ -1,26 +1,33 @@
-import { useState } from 'react'
+import { Dispatch, FC, SetStateAction, useState } from 'react'
 import { GenreItemLabel, GenreSelectDiv } from './styled'
-import { genreList } from '../../../types'
+import { genreList, GenreType } from '../../../types'
 
-export const GenreSelect = () => {
+type GenreSelectProps = {
+  setFilterBy: Dispatch<SetStateAction<"all" | GenreType>>
+}
+
+export const GenreSelect: FC<GenreSelectProps> = ({ setFilterBy }) => {
   const [genre, setGenre] = useState('all')
-  
-  const handleChange = (e:React.ChangeEvent<HTMLInputElement>) => {
-    setGenre(e.target.value) 
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setGenre(e.target.value)
+    setFilterBy(e.target.value as "all" | GenreType) 
   }
 
-  const renderGenreSelect = (list:string[]) => {
-    return list.map(item => (
-      <GenreItemLabel htmlFor={item} key={item} className={(item === genre) ? 'active' : ''}>
+  const renderGenreSelect = (list: string[]) =>
+    list.map((item) => (
+      <GenreItemLabel htmlFor={item} key={item} className={item === genre ? 'active' : ''}>
         {item}
-        <input type='radio' id={item} name='genre' value={item} checked={item===genre} onChange={handleChange} />
+        <input
+          type='radio'
+          id={item}
+          name='genre'
+          value={item}
+          checked={item === genre}
+          onChange={handleChange}
+        />
       </GenreItemLabel>
     ))
-  }
 
-  return (
-    <GenreSelectDiv>
-      {renderGenreSelect(['all', ...genreList])} 
-    </GenreSelectDiv>
-  )
+  return <GenreSelectDiv>{renderGenreSelect(['all', ...genreList])}</GenreSelectDiv>
 }

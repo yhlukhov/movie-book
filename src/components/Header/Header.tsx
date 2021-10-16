@@ -7,19 +7,25 @@ import LoginFormModal from '../body/modals/LoginFormModal'
 
 export const Header = () => {
   const [loginOpen, setLoginOpen] = useState(false)
+  const handleOpen = () => {
+    setLoginOpen(true)
+  }
+  const handleClose = () => {
+    setLoginOpen(false)
+  }
   return (
     <>
     <HeaderDiv>
       <div className='top'>
         <Logo />
         <div className='top-right'>
-          <div className='login-url' onClick={()=>setLoginOpen(true)}>Login</div>
+          <div className='login-url' onClick={handleOpen}>Login</div>
           <AddMovie />
         </div>
       </div>
       <SearchBar />
     </HeaderDiv>
-    {loginOpen && <LoginFormModal handleClose={()=>setLoginOpen(false)} />}
+    {loginOpen && <LoginFormModal handleClose={handleClose} />}
     </>
   )
 }

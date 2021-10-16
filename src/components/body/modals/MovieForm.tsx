@@ -16,7 +16,7 @@ const dateToString = (date:Date) => {
 type PropsType = {
   edit?: boolean
   movie?: MovieType
-  handleClose: Function
+  handleClose: (success?: boolean | undefined)=>void
 }
 
 const MovieForm: FC<PropsType> = ({ edit, movie, handleClose }) => {

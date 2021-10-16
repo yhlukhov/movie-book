@@ -4,7 +4,7 @@ import { DeleteDialog } from './styled'
 
 type DeleteMovieModalProps = {
   id: string
-  handleClose: Function
+  handleClose: ()=>void
 }
 
 const DeleteMovieModal: FC<DeleteMovieModalProps> = ({ id, handleClose }) => {

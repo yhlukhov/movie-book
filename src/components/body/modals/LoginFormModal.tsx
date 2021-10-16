@@ -3,7 +3,7 @@ import LoginForm from './LoginForm'
 import ModalContainer from './ModalContainer'
 
 type LoginFormModalProps = {
-  handleClose:Function
+  handleClose:()=>void
 }
 
 const LoginFormModal:FC<LoginFormModalProps> = ({handleClose}) => {

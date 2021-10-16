@@ -3,8 +3,7 @@ import { CloseBtn, ModalContainerDiv, ModalDiv } from './styled'
 
 type PropsType = {
   title: string
-  // isOpen: boolean
-  handleClose: Function
+  handleClose: (success?: boolean | undefined)=>void
 }
 
 const ModalContainer: FC<PropsType> = ({ title, handleClose, children }) => {
@@ -16,7 +15,7 @@ const ModalContainer: FC<PropsType> = ({ title, handleClose, children }) => {
     }
   }
 
-  const keyPress = useCallback(
+  const escKeyPress = useCallback(
     (e) => {
       if (e.key === 'Escape') {
         handleClose()
@@ -26,8 +25,8 @@ const ModalContainer: FC<PropsType> = ({ title, handleClose, children }) => {
   )
 
   useEffect(() => {
-    document.addEventListener('keydown', keyPress)
-    return () => document.removeEventListener('keydown', keyPress)
+    document.addEventListener('keydown', escKeyPress)
+    return () => document.removeEventListener('keydown', escKeyPress)
   })
 
   return (
