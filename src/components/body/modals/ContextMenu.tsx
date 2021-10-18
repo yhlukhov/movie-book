@@ -10,8 +10,8 @@ type ContextMenuProps = {
   setDeleteOpen: Dispatch<SetStateAction<boolean>>
 }
 
+// Movie card context menu with options: Edit, Delete
 const ContextMenu: FC<ContextMenuProps> = ({ movie, setOpen, setFormOpen, setDeleteOpen }) => {
-
   const ref = useRef<HTMLDivElement>(null)
   const handleClose = (e: MouseEvent) => {
     if (ref.current && ref.current.contains(e.target as Node)) {
@@ -25,9 +25,13 @@ const ContextMenu: FC<ContextMenuProps> = ({ movie, setOpen, setFormOpen, setDel
   }, [])
   return (
     <ContextMenuDiv ref={ref}>
-      <CloseBtnSm onClick={()=>setOpen(false)} />
-      <div className='btn' onClick={()=>setFormOpen(true)}>Edit</div>
-      <div className='btn' onClick={()=>setDeleteOpen(true)}>Delete</div>
+      <CloseBtnSm onClick={() => setOpen(false)} />
+      <div className='btn' onClick={() => setFormOpen(true)}>
+        Edit
+      </div>
+      <div className='btn' onClick={() => setDeleteOpen(true)}>
+        Delete
+      </div>
     </ContextMenuDiv>
   )
 }

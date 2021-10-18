@@ -5,15 +5,14 @@ import { MovieType } from '../../../types'
 
 type PropsType = {
   handleClose: (success?: boolean | undefined)=>void
-  edit?:boolean
   movie?:MovieType
 }
 
-const MovieFormModal: FC<PropsType> = ({ handleClose, edit, movie }) => {
+const MovieFormModal: FC<PropsType> = ({ handleClose, movie }) => {
 
   return (
-    <ModalContainer title={edit ? 'Edit movie' : 'Add movie'} handleClose={handleClose}>
-      <MovieForm edit={edit} movie={movie} handleClose={handleClose} />
+    <ModalContainer title={movie ? 'Edit movie' : 'Add movie'} handleClose={handleClose}>
+      <MovieForm movie={movie} handleClose={handleClose} />
     </ModalContainer>
   )
 }

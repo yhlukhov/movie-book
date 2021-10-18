@@ -5,6 +5,7 @@ import { HeaderDiv } from './styled'
 import { useState } from 'react'
 import LoginFormModal from '../body/modals/LoginFormModal'
 
+
 export const Header = () => {
   const [loginOpen, setLoginOpen] = useState(false)
   const handleOpen = () => {
@@ -16,9 +17,9 @@ export const Header = () => {
   return (
     <>
     <HeaderDiv>
-      <div className='top'>
+      <div className='header-top'>
         <Logo />
-        <div className='top-right'>
+        <div className='header-top-right'>
           <div className='login-url' onClick={handleOpen}>Login</div>
           <AddMovie />
         </div>

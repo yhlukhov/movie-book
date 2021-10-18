@@ -6,6 +6,7 @@ type PropsType = {
   handleClose: (success?: boolean | undefined)=>void
 }
 
+// Modal container component for other modals
 const ModalContainer: FC<PropsType> = ({ title, handleClose, children }) => {
   const modalRef = useRef<HTMLDivElement>(null)
 

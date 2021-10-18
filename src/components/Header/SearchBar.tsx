@@ -1,12 +1,15 @@
 import { useState, FormEvent } from 'react'
 import { Form, SearchInput, SearchButton, Title } from './styled'
+import { useSetRecoilState } from 'recoil'
+import { searchTerm } from '../../recoilStore'
 
 export const SearchBar = () => {
+  const setSearchTerm = useSetRecoilState(searchTerm)
   const [input, setInput] = useState('')
 
   const handleSearch = (e:FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    alert(`Search: ${input}`)
+    setSearchTerm(input)
   }
 
   return (

@@ -1,17 +1,19 @@
-import { Dispatch, FC, SetStateAction, useState } from 'react'
+import { useState } from 'react'
 import { GenreItemLabel, GenreSelectDiv } from './styled'
 import { genreList, GenreType } from '../../../types'
+import { useSetRecoilState } from 'recoil'
+import { filterBy, searchTerm } from '../../../recoilStore'
 
-type GenreSelectProps = {
-  setFilterBy: Dispatch<SetStateAction<"all" | GenreType>>
-}
-
-export const GenreSelect: FC<GenreSelectProps> = ({ setFilterBy }) => {
+// Genre selector component
+export const GenreSelect = () => {
   const [genre, setGenre] = useState('all')
+  const setFilterBy = useSetRecoilState(filterBy)
+  const setSearchTerm = useSetRecoilState(searchTerm)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setGenre(e.target.value)
-    setFilterBy(e.target.value as "all" | GenreType) 
+    setFilterBy(e.target.value as "all" | GenreType)
+    setSearchTerm('')
   }
 
   const renderGenreSelect = (list: string[]) =>

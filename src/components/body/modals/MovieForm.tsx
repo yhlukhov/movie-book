@@ -14,14 +14,14 @@ const dateToString = (date:Date) => {
 }
 
 type PropsType = {
-  edit?: boolean
   movie?: MovieType
   handleClose: (success?: boolean | undefined)=>void
 }
 
-const MovieForm: FC<PropsType> = ({ edit, movie, handleClose }) => {
+// Add or Edit movie. If movie prop is present - it will open modal to edit movie
+const MovieForm: FC<PropsType> = ({ movie, handleClose }) => {
   const initialValues =
-    edit && movie
+    movie
       ? {
           title: movie.title,
           description: movie.description,
