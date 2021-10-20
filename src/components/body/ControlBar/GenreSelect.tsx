@@ -2,13 +2,13 @@ import { useState } from 'react'
 import { GenreItemLabel, GenreSelectDiv } from './styled'
 import { genreList, GenreType } from '../../../types'
 import { useSetRecoilState } from 'recoil'
-import { filterBy, searchTerm } from '../../../recoilStore'
+import { filterBy, searchTermRecoil } from '../../../recoilStore'
 
 // Genre selector component
 export const GenreSelect = () => {
   const [genre, setGenre] = useState('all')
   const setFilterBy = useSetRecoilState(filterBy)
-  const setSearchTerm = useSetRecoilState(searchTerm)
+  const setSearchTerm = useSetRecoilState(searchTermRecoil)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setGenre(e.target.value)

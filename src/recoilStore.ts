@@ -7,7 +7,6 @@ import inception from './assets/img/movieCardImg/Inception.png'
 import killBill from './assets/img/movieCardImg/KillBillVol2.png'
 import reservior from './assets/img/movieCardImg/Reservoirdogs.png'
 import { sotrTypes } from './types/ControlBar'
-import { TypeOf } from 'yup'
 
 export const movieList = atom({
   key: 'movieList',
@@ -86,7 +85,7 @@ export const movieRecoil = atom({
   default: null as MovieType | null
 })
 
-export const searchTerm = atom({
+export const searchTermRecoil = atom({
   key:'searchTerm',
   default:''
 })
