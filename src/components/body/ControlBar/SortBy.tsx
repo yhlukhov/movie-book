@@ -1,11 +1,11 @@
 import { SortByLabel } from './styled'
 import { sotrTypes } from '../../../types'
-import { useSetRecoilState } from 'recoil'
-import { sortBy } from '../../../recoilStore'
+import { useDispatch } from 'react-redux'
+import {setSortBy} from '../../../store/actions'
 
 // Sort selector component
 export const SortBy = () => {
-  const setSortBy = useSetRecoilState(sortBy)
+  const dispatch = useDispatch()
   return (
     <SortByLabel htmlFor='sortBy'>
       <span>Sort By</span>
@@ -13,7 +13,7 @@ export const SortBy = () => {
         name='sortBy'
         id='sortBy'
         onChange={(e) => {
-          setSortBy(e.target.value)
+          dispatch(setSortBy(e.target.value))
         }}
       >
         {Object.values(sotrTypes).map((type) => (

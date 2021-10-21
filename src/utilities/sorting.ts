@@ -26,7 +26,6 @@ export const compareByRating = (a:MovieType, b:MovieType) => {
 }
 
 export const sort = (array:Array<any>, sortBy:string) => {
-  console.log('sort by:', sortBy)
   switch (sortBy) {
     case sotrTypes.releaseDate:
       array.sort(compareByReleaseDate)

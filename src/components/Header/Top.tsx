@@ -1,10 +1,10 @@
-import { useRecoilValue } from 'recoil'
+import { useSelector } from 'react-redux'
 import { Header } from '.'
-import { movieRecoil } from '../../recoilStore'
 import MovieDetails from './MovieDetails'
+import {selectMovie} from '../../store/selectors'
 
 const Top = () => {
-  const movie = useRecoilValue(movieRecoil)
+  const movie = useSelector(selectMovie)
   return movie ? (
     <MovieDetails />
   ) : (

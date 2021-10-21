@@ -1,14 +1,15 @@
 import ReactDOM from 'react-dom'
-import { RecoilRoot } from 'recoil'
+import { Provider } from 'react-redux'
+import store from './store'
 import { ErrorBoundary } from './components/common'
 import { App } from './App'
 import 'typeface-montserrat'
 
 const AppContainer = () => (
   <ErrorBoundary>
-    <RecoilRoot>
+    <Provider store={store}>
       <App />
-    </RecoilRoot>
+    </Provider>
   </ErrorBoundary>
 )
 

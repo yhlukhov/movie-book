@@ -11,7 +11,7 @@ export type MovieType = {
   title: string
   description: string
   genre: GenreType[]
-  releaseDate: Date
+  releaseDate: string
   runtime: number
   rating: number
   movieUrl: string

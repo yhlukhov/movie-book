@@ -1,11 +1,13 @@
-import { Logo } from '../common'
+import { useDispatch, useSelector } from 'react-redux'
 import { MovieDescDiv, SearchIco } from './styled'
 import { formatRuntime } from '../../utilities'
-import { useRecoilState } from 'recoil'
-import { movieRecoil } from '../../recoilStore'
+import { selectMovie } from '../../store/selectors'
+import { setMovie } from '../../store/actions'
+import { Logo } from '../common'
 
 const MovieDetails = () => {
-  const [movie, setMovie] = useRecoilState(movieRecoil)
+  const movie = useSelector(selectMovie)
+  const dispatch = useDispatch()
 
   return movie ? (
     <MovieDescDiv>
@@ -13,7 +15,7 @@ const MovieDetails = () => {
       <div className='desc-top'>
         <Logo />
         <div className='desc-top-right'>
-          <SearchIco onClick={() => setMovie(null)} />
+          <SearchIco onClick={() => dispatch(setMovie(null))} />
         </div>
       </div>
       <div className='movie-details'>
@@ -25,7 +27,7 @@ const MovieDetails = () => {
           </div>
           <div className='genre'>{movie.genre}</div>
           <div className='date'>
-            <div>{movie.releaseDate.getFullYear()}</div>
+            <div>{new Date(movie.releaseDate).getFullYear()}</div>
             <div>{formatRuntime(movie.runtime)}</div>
           </div>
           <div className='description'>{movie.description}</div>

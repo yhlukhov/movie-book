@@ -1,8 +1,9 @@
 import { FC } from 'react'
 import { HintListUl } from './styled'
-import { useRecoilValue, useSetRecoilState } from 'recoil'
-import { movieList, movieRecoil } from '../../recoilStore'
+import {setMovie} from '../../store/actions'
 import { search } from '../../utilities'
+import { useDispatch, useSelector } from 'react-redux'
+import { selectMovies } from '../../store/selectors'
 
 
 type HistListProps = {
@@ -10,13 +11,13 @@ type HistListProps = {
 }
 
 export const HintList:FC<HistListProps> = ({input}) => {
-  const setMovie = useSetRecoilState(movieRecoil)
-  const movies = useRecoilValue(movieList)
+  const dispatch = useDispatch()
+  const movies = useSelector(selectMovies)
   const hintList = search(movies, input)
   
   return (
     <HintListUl>
-      {hintList.map(movie => <li onClick={()=>setMovie(movie)}>{movie.title}</li>)}
+      {hintList.map(movie => <li onClick={()=>dispatch(setMovie(movie))}>{movie.title}</li>)}
     </HintListUl>
   )
 }

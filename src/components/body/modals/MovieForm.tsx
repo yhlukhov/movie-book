@@ -20,6 +20,7 @@ type PropsType = {
 
 // Add or Edit movie. If movie prop is present - it will open modal to edit movie
 const MovieForm: FC<PropsType> = ({ movie, handleClose }) => {
+  
   const initialValues =
     movie
       ? {
@@ -29,7 +30,7 @@ const MovieForm: FC<PropsType> = ({ movie, handleClose }) => {
           rating: movie.rating,
           runtime: movie.runtime,
           genre: movie.genre,
-          releaseDate: dateToString(movie.releaseDate),
+          releaseDate: dateToString(new Date(movie.releaseDate)),
         }
       : {
           title: '',
