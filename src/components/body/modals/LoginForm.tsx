@@ -6,7 +6,7 @@ import { TextField } from './FormControls'
 
 type LoginFormProps = {}
 
-const LoginForm: FC<LoginFormProps> = () => {
+export const LoginForm: FC<LoginFormProps> = () => {
   return (
     <Formik
       initialValues={{
@@ -42,5 +42,3 @@ const validationSchema = yup.object().shape({
   login:yup.string().required().email(),
   password:yup.string().required().min(4).max(40)
 })
-
-export default LoginForm

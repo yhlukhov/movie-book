@@ -1,11 +1,11 @@
-import {createSlice} from '@reduxjs/toolkit'
-import { GenreType } from '../types'
+import {createSlice, PayloadAction} from '@reduxjs/toolkit'
+import { GenreType, SortTypes } from '../types'
 import { RootState } from './store'
-import { sotrTypes } from '../types/ControlBar'
 
 const initialState = {
-  sortBy:sotrTypes.releaseDate,
+  sortBy: 'release_date' as SortTypes,
   genre:'all' as GenreType|'all',
+  searchInput:'',
   searchTerm: '',
 }
 
@@ -13,22 +13,26 @@ const appSlice = createSlice({
   name: 'app',
   initialState,
   reducers: {
-    setSearchTerm: (state, action) => {
+    setSearchInput:(state, action:PayloadAction<string>) => {
+      state.searchInput = action.payload
+    },
+    setSearchTerm: (state, action:PayloadAction<string>) => {
       state.searchTerm = action.payload
     },
-    setGenre: (state, action) => {
+    setGenre: (state, action:PayloadAction<GenreType|'all'>) => {
       state.genre = action.payload
     },
-    setSortBy: (state, action) => {
+    setSortBy: (state, action:PayloadAction<SortTypes>) => {
       state.sortBy = action.payload
     }
   }
 })
 
 // Action creators:
-export const {setSearchTerm, setGenre, setSortBy} = appSlice.actions
+export const {setSearchInput, setSearchTerm, setGenre, setSortBy} = appSlice.actions
 
 // Selectors:
+export const selectSearchInput = (store:RootState) => store.app.searchInput
 export const selectSearchTerm = (store:RootState) => store.app.searchTerm
 export const selectGenre = (store:RootState) => store.app.genre
 export const selectSortBy = (store:RootState) => store.app.sortBy

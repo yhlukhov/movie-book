@@ -1,23 +1,37 @@
-import { FC } from 'react'
+import { useEffect } from 'react'
+import { useSelector } from 'react-redux'
 import { HintListUl } from './styled'
-import {setMovie} from '../../store/actions'
-import { search } from '../../utilities'
-import { useDispatch, useSelector } from 'react-redux'
-import { selectMovies } from '../../store/selectors'
+import {
+  useAppDispatch,
+  selectMovieHints,
+  selectSearchInput,
+  setMovie,
+  getMovieHints,
+  setMovieHints,
+} from '../../store'
 
+export const HintList = () => {
+  const searchInput = useSelector(selectSearchInput)
+  const movieHints = useSelector(selectMovieHints)
+  const dispatch = useAppDispatch()
 
-type HistListProps = {
-  input:string
-}
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      dispatch(getMovieHints(searchInput))
+    }, 500)
+    return () => {
+      clearTimeout(timeout)
+      dispatch(setMovieHints([]))
+    }
+  }, [searchInput, dispatch])
 
-export const HintList:FC<HistListProps> = ({input}) => {
-  const dispatch = useDispatch()
-  const movies = useSelector(selectMovies)
-  const hintList = search(movies, input)
-  
   return (
     <HintListUl>
-      {hintList.map(movie => <li onClick={()=>dispatch(setMovie(movie))}>{movie.title}</li>)}
+      {movieHints.map((movie) => (
+        <li onClick={() => dispatch(setMovie(movie))} key={movie.id}>
+          {movie.title}
+        </li>
+      ))}
     </HintListUl>
   )
 }

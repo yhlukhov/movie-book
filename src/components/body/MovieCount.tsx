@@ -1,11 +1,9 @@
-import { FC } from 'react'
+import { useSelector } from 'react-redux'
+import {selectTotalAmount} from '../../store'
 import { MovieCountDiv } from './styled'
 
-interface MovieCountProps {
-  count:number
-}
-
-export const MovieCount:FC<MovieCountProps> = ({count}) => {
+export const MovieCount = () => {
+  const count = useSelector(selectTotalAmount)
   return(
     <MovieCountDiv><span>{count}</span> movies found</MovieCountDiv>
   )

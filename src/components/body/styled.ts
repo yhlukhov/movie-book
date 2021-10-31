@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { colorPalette } from '../common/styled'
+import { BsFillArrowLeftCircleFill, BsFillArrowRightCircleFill } from 'react-icons/bs'
 
 export const BodyDiv = styled.div`
   width: 1200px;
@@ -28,10 +29,14 @@ export const MovieCardDiv = styled.div`
   width: 320px;
   margin: 15px 25px;
   position: relative;
-  & img.picture {
+  & .picture {
     width: 100%;
     height: 480px;
     cursor: pointer;
+    & img {
+      width: 100%;
+      height: 100%;
+    }
   }
   & .info-wrapper {
     display: flex;
@@ -54,7 +59,7 @@ export const MovieCardDiv = styled.div`
   }
   & .rating {
     position: absolute;
-    bottom: 85px;
+    top: 440px;
     right: 10px;
     width: 28px;
     height: 28px;
@@ -93,25 +98,27 @@ export const MovieCardDiv = styled.div`
   }
 `
 
-export const ContextMenuDiv = styled.div`
-  position: absolute;
-  top: 50px;
-  right: 50px;
-  width: 190px;
-  text-align:right;
-  border-radius: 4px;
-  padding:5px;
-  padding-top: 25px;
-  background-color: ${colorPalette.black};
-  & .btn {
-    width: 100%;
-    height: 30px;
+export const PaginatorDiv = styled.div`
+  margin: 20px 10px;
+  display: flex;
+  color: ${colorPalette.red};
+  font-size: x-large;
+  & .pages {
+    margin: 0 10px;
     display: flex;
-    justify-content: left;
-    align-items: center;
-    padding-left: 15px;
-    &:hover {
-      background-color: ${colorPalette.red};
+    & li {
+      padding: 0 5px;
+      cursor: pointer;
+    }
+    & .active-page {
+      color: white;
     }
   }
+`
+
+export const LeftArrow = styled(BsFillArrowLeftCircleFill)`
+  cursor: pointer;
+`
+export const RightArrow = styled(BsFillArrowRightCircleFill)`
+  cursor: pointer;
 `

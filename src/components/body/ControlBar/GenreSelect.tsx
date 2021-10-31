@@ -1,16 +1,17 @@
-import { useDispatch, useSelector } from 'react-redux'
-import { GenreItemLabel, GenreSelectDiv } from './styled'
+import { useSelector } from 'react-redux'
 import { genreList } from '../../../types'
-import {selectGenre} from '../../../store/selectors'
-import {setGenre, setSearchTerm} from '../../../store/actions'
+import { GenreItemLabel, GenreSelectDiv } from './styled'
+import { selectGenre, setGenre, setPage, setSearchTerm, useAppDispatch } from '../../../store'
+import { GenreType } from '../../../types/MovieCard'
 
 // Genre selector component
 export const GenreSelect = () => {
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
   const genre = useSelector(selectGenre)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    dispatch(setGenre(e.target.value))
+    dispatch(setPage(1))
+    dispatch(setGenre(e.target.value as GenreType|'all'))
     dispatch(setSearchTerm(''))
   }
 

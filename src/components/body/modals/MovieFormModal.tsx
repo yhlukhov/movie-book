@@ -1,6 +1,5 @@
 import { FC } from 'react'
-import ModalContainer from './ModalContainer'
-import MovieForm from './MovieForm'
+import {ModalContainer, MovieForm} from './'
 import { MovieType } from '../../../types'
 
 type PropsType = {
@@ -8,7 +7,7 @@ type PropsType = {
   movie?:MovieType
 }
 
-const MovieFormModal: FC<PropsType> = ({ handleClose, movie }) => {
+export const MovieFormModal: FC<PropsType> = ({ handleClose, movie }) => {
 
   return (
     <ModalContainer title={movie ? 'Edit movie' : 'Add movie'} handleClose={handleClose}>
@@ -16,5 +15,3 @@ const MovieFormModal: FC<PropsType> = ({ handleClose, movie }) => {
     </ModalContainer>
   )
 }
-
-export default MovieFormModal

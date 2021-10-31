@@ -1,13 +1,14 @@
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
+import { useAppDispatch, selectMovie, setMovie } from '../../store'
 import { MovieDescDiv, SearchIco } from './styled'
 import { formatRuntime } from '../../utilities'
-import { selectMovie } from '../../store/selectors'
-import { setMovie } from '../../store/actions'
+import { MovieType } from '../../types'
 import { Logo } from '../common'
 
 const MovieDetails = () => {
   const movie = useSelector(selectMovie)
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
+  const getYear = (movie:MovieType) => movie.release_date ? new Date(movie.release_date).getFullYear() : ''
 
   return movie ? (
     <MovieDescDiv>
@@ -19,18 +20,18 @@ const MovieDetails = () => {
         </div>
       </div>
       <div className='movie-details'>
-        <img src={movie.imageUrl} alt='Banner' />
+        <img src={movie.poster_path} alt='Banner' />
         <div className='info'>
           <div className='title'>
             <h2>{movie.title}</h2>
-            <div className='rating'>{movie.rating}</div>
+            <div className='rating'>{movie.vote_average}</div>
           </div>
-          <div className='genre'>{movie.genre}</div>
+          <div className='genre'>{movie.genres}</div>
           <div className='date'>
-            <div>{new Date(movie.releaseDate).getFullYear()}</div>
+            <div>{getYear(movie)}</div>
             <div>{formatRuntime(movie.runtime)}</div>
           </div>
-          <div className='description'>{movie.description}</div>
+          <div className='description'>{movie.overview}</div>
         </div>
       </div>
     </MovieDescDiv>

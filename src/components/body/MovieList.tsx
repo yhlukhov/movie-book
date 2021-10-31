@@ -1,38 +1,41 @@
-import {useSelector} from 'react-redux'
+import { useEffect } from 'react'
+import { useSelector } from 'react-redux'
 import { MovieCard } from './MovieCard'
 import { MovieCount } from './MovieCount'
 import { MovieListDiv } from './styled'
-import { sort, filter, search } from '../../utilities'
-import { MovieType } from '../../types'
-import {selectMovies, selectSearchTerm, selectGenre, selectSortBy} from '../../store/selectors'
+import { Paginator } from './Paginator'
+import {
+  useAppDispatch,
+  getMovies,
+  searchMovies,
+  selectMovies,
+  selectSearchTerm,
+  selectGenre,
+  selectSortBy,
+  selectPage,
+} from '../../store/'
 
 export const MovieList = () => {
   const genre = useSelector(selectGenre)
   const sortBy = useSelector(selectSortBy)
   const searchTerm = useSelector(selectSearchTerm)
   const movies = useSelector(selectMovies)
-  let moviesList = [] as MovieType[]
+  const page = useSelector(selectPage)
+  const dispatch = useAppDispatch()
 
-  if (searchTerm) {
-    // Perform search by title on movies list:
-    moviesList = search(movies, searchTerm)
-  } else {
-    // Getting movie list and filtering:
-    moviesList = genre === 'all' ? [...movies] : filter(movies, genre)
-  }
+  useEffect(() => {
+    dispatch(searchTerm ? searchMovies(searchTerm) : getMovies())
+  }, [searchTerm, sortBy, genre, page, dispatch])
 
-  // Sorting:
-  sort(moviesList, sortBy)
-
-  // Render:
   return (
     <>
-      <MovieCount count={moviesList.length}/>
+      <MovieCount />
       <MovieListDiv>
-        {moviesList.map((movie) => (
+        {movies.map((movie) => (
           <MovieCard movie={movie} key={movie.id} />
         ))}
       </MovieListDiv>
+      <Paginator />
     </>
   )
 }

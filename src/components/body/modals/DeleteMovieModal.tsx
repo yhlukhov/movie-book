@@ -1,15 +1,18 @@
 import { FC } from 'react'
-import ModalContainer from './ModalContainer'
+import { useDispatch } from 'react-redux'
+import { ModalContainer } from './'
 import { DeleteDialog } from './styled'
+import { removeMovie } from '../../../store/movieSlice'
 
 type DeleteMovieModalProps = {
   id: string
-  handleClose: ()=>void
+  handleClose: () => void
 }
 
-const DeleteMovieModal: FC<DeleteMovieModalProps> = ({ id, handleClose }) => {
+export const DeleteMovieModal: FC<DeleteMovieModalProps> = ({ id, handleClose }) => {
+  const dispatch = useDispatch()
   const handleDelete = () => {
-    console.log('Delte movie by id: ', id)
+    dispatch(removeMovie(id))
     handleClose()
   }
   return (
@@ -21,5 +24,3 @@ const DeleteMovieModal: FC<DeleteMovieModalProps> = ({ id, handleClose }) => {
     </ModalContainer>
   )
 }
-
-export default DeleteMovieModal

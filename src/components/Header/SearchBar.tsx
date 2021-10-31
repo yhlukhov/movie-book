@@ -1,20 +1,30 @@
-import { useState, FormEvent } from 'react'
-import { useDispatch } from 'react-redux'
-import { setSearchTerm } from '../../store/actions'
+import { FormEvent } from 'react'
+import { useSelector } from 'react-redux'
 import { Form, SearchInput, SearchButton, Title, ClearIco } from './styled'
 import { HintList } from './HintList'
+import {
+  useAppDispatch,
+  selectSearchInput,
+  setSearchInput,
+  setSearchTerm,
+  setMovieHints,
+  setPage,
+} from '../../store'
 
 export const SearchBar = () => {
-  const dispatch = useDispatch()
-  const [input, setInput] = useState('')
+  const dispatch = useAppDispatch()
+  const searchInput = useSelector(selectSearchInput)
 
   const handleSearch = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    dispatch(setSearchTerm(input))
+    dispatch(setSearchTerm(searchInput))
+    dispatch(setMovieHints([]))
+    dispatch(setPage(1))
   }
   const clearInput = () => {
     dispatch(setSearchTerm(''))
-    setInput('')
+    dispatch(setSearchInput(''))
+    dispatch(setPage(1))
   }
 
   return (
@@ -24,12 +34,12 @@ export const SearchBar = () => {
         <label>
           <SearchInput
             type='text'
-            value={input}
+            value={searchInput}
             placeholder='What do you want to watch?'
-            onChange={(e) => setInput(e.target.value)}
+            onChange={(e) => dispatch(setSearchInput(e.target.value))}
           />
-          {input && <ClearIco onClick={clearInput} />}
-          {input.length > 1 && <HintList input={input} />}
+          {searchInput && <ClearIco onClick={clearInput} />}
+          {searchInput.length > 1 && <HintList />}
         </label>
         <SearchButton>Search</SearchButton>
       </Form>
