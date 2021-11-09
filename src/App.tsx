@@ -1,13 +1,17 @@
-import styled from 'styled-components'
+import { Body } from './components/body/Body'
+import { Footer } from './components/footer/Footer'
+import { AppDiv, GlobalStyle } from './styled'
+import Top from './components/Header/Top'
 
 export const App = () => {
-  return(
-    <AppDiv>
-      App
-    </AppDiv>
+  return (
+    <>
+      <AppDiv>
+        <Top />
+        <Body />
+        <Footer />
+      </AppDiv>
+      <GlobalStyle />
+    </>
   )
 }
-
-const AppDiv = styled.div`
-  background-color: #555555;
-`
