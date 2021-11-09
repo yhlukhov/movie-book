@@ -16,6 +16,7 @@ export default store
 
 export type AppStore = typeof store
 export type RootState = ReturnType<typeof rootReducer>
+export type GetState = () => RootState
 export type DispatchType = typeof store.dispatch
 
 // Hooks:

@@ -4,13 +4,17 @@ import { MovieDescDiv, SearchIco } from './styled'
 import { formatRuntime } from '../../utilities'
 import { MovieType } from '../../types'
 import { Logo } from '../common'
+import { FC } from 'react'
 
-const MovieDetails = () => {
-  const movie = useSelector(selectMovie)
+type MovieDetailsProps = {
+  movie: MovieType
+}
+
+const MovieDetails:FC<MovieDetailsProps> = ({movie}) => {
   const dispatch = useAppDispatch()
   const getYear = (movie:MovieType) => movie.release_date ? new Date(movie.release_date).getFullYear() : ''
 
-  return movie ? (
+  return (
     <MovieDescDiv>
       {movie.title}
       <div className='desc-top'>
@@ -35,7 +39,7 @@ const MovieDetails = () => {
         </div>
       </div>
     </MovieDescDiv>
-  ) : null
+  )
 }
 
 export default MovieDetails

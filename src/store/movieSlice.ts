@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { MovieFormData, MovieType } from '../types'
-import { DispatchType, RootState } from './store'
+import { DispatchType, RootState, GetState } from './store'
 import { loadMovies, loadMoviesBySearchTerm, postMovie, putMovie, deleteMovie, loadMovie } from '../API'
 import { acquireSortOrder } from '../utilities'
 
@@ -53,7 +53,7 @@ export const selectPage = (state: RootState) => state.movies.page
 export const selectAddMovieTitle = (state:RootState) => state.movies.addMovieTitle
 
 // Thunks:
-export const getMovies = () => async (dispatch:DispatchType, getState:()=>RootState) => {
+export const getMovies = () => async (dispatch:DispatchType, getState:GetState) => {
   
   const state = getState()
   const {genre, sortBy} = state.app
@@ -67,7 +67,7 @@ export const getMovies = () => async (dispatch:DispatchType, getState:()=>RootSt
   }
 }
 
-export const searchMovies = (searchTerm:string) => async (dispatch:DispatchType, getState:()=>RootState) => {
+export const searchMovies = (searchTerm:string) => async (dispatch:DispatchType, getState:GetState) => {
   const page = getState().movies.page
   const limit = getState().movies.limit
   const response = await loadMoviesBySearchTerm(searchTerm, page, limit)
@@ -77,7 +77,7 @@ export const searchMovies = (searchTerm:string) => async (dispatch:DispatchType,
   }
 }
 
-export const getMovie = (id:string) => async (dispatch:DispatchType, getState:()=>RootState) => {
+export const getMovie = (id:string) => async (dispatch:DispatchType, getState:GetState) => {
     const response = await loadMovie(id)
     if(response) {
       dispatch(setMovie(response))
@@ -91,7 +91,7 @@ export const getMovieHints = (searchTerm:string) => async (dispatch: DispatchTyp
   }
 }
 
-export const addMovie = (data:MovieFormData) => async (dispatch:DispatchType, getState:()=>RootState) => {
+export const addMovie = (data:MovieFormData) => async (dispatch:DispatchType, getState:GetState) => {
   await postMovie(data)
   dispatch(setAddMovieTitle(data.title))
   const searchTerm = getState().app.searchTerm
@@ -102,7 +102,7 @@ export const addMovie = (data:MovieFormData) => async (dispatch:DispatchType, ge
   dispatch(getMovies())
 }
 
-export const editMovie = (movie:MovieType) => async (dispatch:DispatchType, getState:()=>RootState) => {
+export const editMovie = (movie:MovieType) => async (dispatch:DispatchType, getState:GetState) => {
   if(!movie.tagline) movie.tagline = movie.title
   await putMovie(movie)
   const searchTerm = getState().app.searchTerm
@@ -113,7 +113,7 @@ export const editMovie = (movie:MovieType) => async (dispatch:DispatchType, getS
   dispatch(getMovies())
 }
 
-export const removeMovie = (id:string) => async(dispatch:DispatchType, getState:()=>RootState) => {
+export const removeMovie = (id:string) => async(dispatch:DispatchType, getState:GetState) => {
   await deleteMovie(id)
   const searchTerm = getState().app.searchTerm
   if (searchTerm) {
