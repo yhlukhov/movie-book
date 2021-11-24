@@ -1,38 +1,41 @@
+import { useEffect } from 'react'
+import { useSelector } from 'react-redux'
 import { MovieCard } from './MovieCard'
 import { MovieCount } from './MovieCount'
 import { MovieListDiv } from './styled'
-import { sort, filter, search } from '../../utilities'
-import { useRecoilValue } from 'recoil'
-import { filterBy, movieList, searchTerm, sortBy } from '../../recoilStore'
-import { MovieType } from '../../types'
+import { Paginator } from './Paginator'
+import {
+  useAppDispatch,
+  getMovies,
+  searchMovies,
+  selectMovies,
+  selectSearchTerm,
+  selectGenre,
+  selectSortBy,
+  selectPage,
+} from '../../store/'
 
 export const MovieList = () => {
-  const genre = useRecoilValue(filterBy)
-  const sortParam = useRecoilValue(sortBy)
-  const searchText = useRecoilValue(searchTerm)
-  const movies = useRecoilValue(movieList)
-  let moviesList = [] as MovieType[]
+  const genre = useSelector(selectGenre)
+  const sortBy = useSelector(selectSortBy)
+  const searchTerm = useSelector(selectSearchTerm)
+  const movies = useSelector(selectMovies)
+  const page = useSelector(selectPage)
+  const dispatch = useAppDispatch()
 
-  if (searchText) {
-    // Perform search by title on movies list:
-    moviesList = search(movies, searchText)
-  } else {
-    // Getting movie list and filtering:
-    moviesList = genre === 'all' ? [...movies] : filter(movies, genre)
-  }
+  useEffect(() => {
+    dispatch(searchTerm ? searchMovies(searchTerm) : getMovies())
+  }, [searchTerm, sortBy, genre, page, dispatch])
 
-  // Sorting:
-  sort(moviesList, sortParam)
-
-  // Render:
   return (
     <>
-      <MovieCount count={movies.length} />
+      <MovieCount />
       <MovieListDiv>
-        {moviesList.map((movie) => (
+        {movies.map((movie) => (
           <MovieCard movie={movie} key={movie.id} />
         ))}
       </MovieListDiv>
+      <Paginator />
     </>
   )
 }

@@ -1,19 +1,18 @@
-import { useState } from 'react'
+import { useSelector } from 'react-redux'
+import { genreList } from '../../../types'
 import { GenreItemLabel, GenreSelectDiv } from './styled'
-import { genreList, GenreType } from '../../../types'
-import { useSetRecoilState } from 'recoil'
-import { filterBy, searchTerm } from '../../../recoilStore'
+import { selectGenre, setGenre, setPage, setSearchTerm, useAppDispatch } from '../../../store'
+import { GenreType } from '../../../types/MovieCard'
 
 // Genre selector component
 export const GenreSelect = () => {
-  const [genre, setGenre] = useState('all')
-  const setFilterBy = useSetRecoilState(filterBy)
-  const setSearchTerm = useSetRecoilState(searchTerm)
+  const dispatch = useAppDispatch()
+  const genre = useSelector(selectGenre)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setGenre(e.target.value)
-    setFilterBy(e.target.value as "all" | GenreType)
-    setSearchTerm('')
+    dispatch(setPage(1))
+    dispatch(setGenre(e.target.value as GenreType|'all'))
+    dispatch(setSearchTerm(''))
   }
 
   const renderGenreSelect = (list: string[]) =>

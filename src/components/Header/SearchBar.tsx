@@ -1,27 +1,46 @@
-import { useState, FormEvent } from 'react'
-import { Form, SearchInput, SearchButton, Title } from './styled'
-import { useSetRecoilState } from 'recoil'
-import { searchTerm } from '../../recoilStore'
+import { FormEvent } from 'react'
+import { useSelector } from 'react-redux'
+import { Form, SearchInput, SearchButton, Title, ClearIco } from './styled'
+import { HintList } from './HintList'
+import {
+  useAppDispatch,
+  selectSearchInput,
+  setSearchInput,
+  setSearchTerm,
+  setMovieHints,
+  setPage,
+} from '../../store'
 
 export const SearchBar = () => {
-  const setSearchTerm = useSetRecoilState(searchTerm)
-  const [input, setInput] = useState('')
+  const dispatch = useAppDispatch()
+  const searchInput = useSelector(selectSearchInput)
 
-  const handleSearch = (e:FormEvent<HTMLFormElement>) => {
+  const handleSearch = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    setSearchTerm(input)
+    dispatch(setSearchTerm(searchInput))
+    dispatch(setMovieHints([]))
+    dispatch(setPage(1))
+  }
+  const clearInput = () => {
+    dispatch(setSearchTerm(''))
+    dispatch(setSearchInput(''))
+    dispatch(setPage(1))
   }
 
   return (
     <>
       <Title>Find your movie</Title>
       <Form onSubmit={handleSearch}>
-        <SearchInput
-          type='text'
-          value={input}
-          placeholder='What do you want to watch?'
-          onChange={(e) => setInput(e.target.value)}
-        />
+        <label>
+          <SearchInput
+            type='text'
+            value={searchInput}
+            placeholder='What do you want to watch?'
+            onChange={(e) => dispatch(setSearchInput(e.target.value))}
+          />
+          {searchInput && <ClearIco onClick={clearInput} />}
+          {searchInput.length > 1 && <HintList />}
+        </label>
         <SearchButton>Search</SearchButton>
       </Form>
     </>

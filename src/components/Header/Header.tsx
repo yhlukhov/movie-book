@@ -3,7 +3,7 @@ import { AddMovie } from './AddMovie'
 import { SearchBar } from './SearchBar'
 import { HeaderDiv } from './styled'
 import { useState } from 'react'
-import LoginFormModal from '../body/modals/LoginFormModal'
+import {LoginFormModal} from '../body/modals'
 
 
 export const Header = () => {

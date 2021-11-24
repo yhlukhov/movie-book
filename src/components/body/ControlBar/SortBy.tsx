@@ -1,11 +1,11 @@
+import { useAppDispatch, setPage, setSortBy  } from '../../../store'
+import { sortTypes, SortTypes } from '../../../types'
 import { SortByLabel } from './styled'
-import { sotrTypes } from '../../../types'
-import { useSetRecoilState } from 'recoil'
-import { sortBy } from '../../../recoilStore'
 
 // Sort selector component
 export const SortBy = () => {
-  const setSortBy = useSetRecoilState(sortBy)
+  const dispatch = useAppDispatch()
+
   return (
     <SortByLabel htmlFor='sortBy'>
       <span>Sort By</span>
@@ -13,15 +13,15 @@ export const SortBy = () => {
         name='sortBy'
         id='sortBy'
         onChange={(e) => {
-          setSortBy(e.target.value)
+          dispatch(setPage(1))
+          dispatch(setSortBy(e.target.value as SortTypes))
         }}
       >
-        {Object.values(sotrTypes).map((type) => (
-          <option value={type} key={type}>
-            {type}
-          </option>
+        {Object.entries(sortTypes).map(([type, value]) => (
+          <option value={type} key={type}>{value}</option>
         ))}
       </select>
     </SortByLabel>
   )
 }
+ 

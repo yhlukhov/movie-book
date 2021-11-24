@@ -153,6 +153,30 @@ export const StyledForm = styled(Form)`
   }
 `
 
+export const ContextMenuDiv = styled.div`
+  position: absolute;
+  top: 50px;
+  right: 50px;
+  width: 190px;
+  text-align:right;
+  border-radius: 4px;
+  padding:5px;
+  padding-top: 25px;
+  background-color: ${colorPalette.black};
+  & .btn {
+    width: 100%;
+    height: 30px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding-left: 15px;
+    cursor: pointer;
+    &:hover {
+      background-color: ${colorPalette.red};
+    }
+  }
+`
+
 export const DeleteDialog = styled.div`
   display: flex;
   flex-direction: column;
@@ -165,6 +189,8 @@ export const DeleteDialog = styled.div`
   & button {
     height: 57px;
     width: 182px;
+    cursor: pointer;
+    border: none;
     border-radius: 4px;
     font-size: 20px;
     font-weight: 500;

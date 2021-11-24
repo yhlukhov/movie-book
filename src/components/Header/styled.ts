@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import mainBanner from '../../assets/img/main-banner.png'
 import { colorPalette } from '../common/styled'
 import { GoSearch } from 'react-icons/go'
+import {VscClose} from 'react-icons/vsc'
 
 export const HeaderDiv = styled.div`
   position: relative;
@@ -136,6 +137,10 @@ export const Form = styled.form`
   display: flex;
   justify-content: center;
   margin-top: 30px;
+  & label {
+    position: relative;
+  }
+
 `
 
 export const SearchInput = styled.input`
@@ -165,6 +170,21 @@ export const SearchButton = styled.button`
   background: ${colorPalette.red};
 `
 
+export const HintListUl = styled.ul`
+  position: absolute;
+  top: 65px;
+  left: 15px;
+  color: ${colorPalette.white};
+  max-height: 120px;
+  & li {
+    padding: 2px 10px;
+    cursor: pointer;
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+`
+
 export const SearchIco = styled(GoSearch)`
   color: ${colorPalette.red};
   font-size: 28px;
@@ -173,4 +193,13 @@ export const SearchIco = styled(GoSearch)`
   &:hover{
     transform: scale(1.1);
   }
+`
+
+export const ClearIco = styled(VscClose)`
+  color: white;
+  font-size: 18px;
+  position: absolute;
+  top: 23px;
+  right: 20px;
+  cursor: pointer;
 `

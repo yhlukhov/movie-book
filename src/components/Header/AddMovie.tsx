@@ -1,6 +1,5 @@
 import { useState } from 'react'
-import CongratModal from '../body/modals/CongratModal';
-import AddMovieModal from '../body/modals/MovieFormModal'
+import {MovieFormModal, CongratModal} from '../body/modals';
 import { AddBtn } from './styled'
 
 // Add Movie component with Add button and Modal Dialog
@@ -19,7 +18,7 @@ export const AddMovie = () => {
   return (
     <>
       <AddBtn onClick={handleAddClick}>+ Add movie</AddBtn>
-      {isOpen &&<AddMovieModal handleClose={handleClose} />}
+      {isOpen &&<MovieFormModal handleClose={handleClose} />}
       {isCongratOpen && <CongratModal handleClose={()=>setIsCongratOpen(false)} />}
     </>
   )

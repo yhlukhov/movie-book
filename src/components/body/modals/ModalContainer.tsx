@@ -7,7 +7,7 @@ type PropsType = {
 }
 
 // Modal container component for other modals
-const ModalContainer: FC<PropsType> = ({ title, handleClose, children }) => {
+export const ModalContainer: FC<PropsType> = ({ title, handleClose, children }) => {
   const modalRef = useRef<HTMLDivElement>(null)
 
   const onClose = (e: MouseEvent<HTMLDivElement>) => {
@@ -40,5 +40,3 @@ const ModalContainer: FC<PropsType> = ({ title, handleClose, children }) => {
     </ModalContainerDiv>
   )
 }
-
-export default ModalContainer
