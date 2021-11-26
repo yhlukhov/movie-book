@@ -34,10 +34,19 @@ export async function loadMovies(
   }
 }
 
-export async function loadMoviesBySearchTerm(searchTerm: string, page: number, limit:number) {
+export async function loadMoviesBySearchTerm(
+  searchTerm: string,
+  genre: null | string,
+  sortBy: string,
+  sortOrder: SortOrder,
+  page: number,
+  limit: number
+) {
   try {
     const response = await api.get(
-      `./movies?search=${searchTerm}&searchBy=title&limit=${limit}&offset=${(page - 1) * limit}`
+      `./movies?search=${searchTerm}&searchBy=title&filter=${[
+        genre,
+      ]}&sortBy=${sortBy}&sortOrder=${sortOrder}&limit=${limit}&offset=${(page - 1) * limit}`
     )
     return response.data as MoviesResponse
   } catch (e) {
@@ -47,7 +56,7 @@ export async function loadMoviesBySearchTerm(searchTerm: string, page: number, l
   }
 }
 
-export async function loadMovie(id:string) {
+export async function loadMovie(id: string) {
   try {
     const response = await api.get(`/movies/${id}`)
     return response.data as MovieType
@@ -58,9 +67,9 @@ export async function loadMovie(id:string) {
   }
 }
 
-export async function postMovie (data:MovieFormData) {
+export async function postMovie(data: MovieFormData) {
   try {
-    const response = await api.post('/movies', data )
+    const response = await api.post('/movies', data)
     return response.data as MovieType
   } catch (e) {
     if (axios.isAxiosError(e) && e.response) {
@@ -69,7 +78,7 @@ export async function postMovie (data:MovieFormData) {
   }
 }
 
-export async function putMovie (movie:MovieType) {
+export async function putMovie(movie: MovieType) {
   try {
     const response = await api.put('/movies', movie)
     return response.data as MovieType
@@ -80,7 +89,7 @@ export async function putMovie (movie:MovieType) {
   }
 }
 
-export async function deleteMovie (id:string) {
+export async function deleteMovie(id: string) {
   try {
     const response = await api.delete(`/movies/${id}`)
     return response

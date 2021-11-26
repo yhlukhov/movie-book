@@ -68,9 +68,12 @@ export const getMovies = () => async (dispatch:DispatchType, getState:GetState) 
 }
 
 export const searchMovies = (searchTerm:string) => async (dispatch:DispatchType, getState:GetState) => {
-  const page = getState().movies.page
-  const limit = getState().movies.limit
-  const response = await loadMoviesBySearchTerm(searchTerm, page, limit)
+  const state = getState()
+  const {genre, sortBy} = state.app
+  const {page, limit} = state.movies
+  const sortOrder = acquireSortOrder(sortBy)
+  const genreVal = genre === 'all' ? null : genre
+  const response = await loadMoviesBySearchTerm(searchTerm, genreVal, sortBy, sortOrder, page, limit)
   if (response) {
     dispatch(setMovies(response.data)) 
     dispatch(setTotalAmount(response.totalAmount))
@@ -84,8 +87,12 @@ export const getMovie = (id:string) => async (dispatch:DispatchType, getState:Ge
     }
 }
 
-export const getMovieHints = (searchTerm:string) => async (dispatch: DispatchType) => {
-  const response = await loadMoviesBySearchTerm(searchTerm, 1, 6)
+export const getMovieHints = (searchTerm:string) => async (dispatch: DispatchType, getState:GetState) => {
+  const state = getState()
+  const {genre, sortBy} = state.app
+  const sortOrder = acquireSortOrder(sortBy)
+  const genreVal = genre === 'all' ? null : genre
+  const response = await loadMoviesBySearchTerm(searchTerm, genreVal, sortBy,sortOrder, 1, 6)
   if (response) {
     dispatch(setMovieHints(response.data))
   }

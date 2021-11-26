@@ -1,13 +1,16 @@
+import { useState } from 'react'
+import { useParams } from 'react-router-dom'
 import { Logo } from '../common/Logo'
 import { AddMovie } from './AddMovie'
 import { SearchBar } from './SearchBar'
 import { HeaderDiv } from './styled'
-import { useState } from 'react'
 import {LoginFormModal} from '../body/modals'
 
 
 export const Header = () => {
   const [loginOpen, setLoginOpen] = useState(false)
+  const params = useParams()
+
   const handleOpen = () => {
     setLoginOpen(true)
   }
@@ -24,7 +27,7 @@ export const Header = () => {
           <AddMovie />
         </div>
       </div>
-      <SearchBar />
+      <SearchBar searchQuery={params.searchQuery} />
     </HeaderDiv>
     {loginOpen && <LoginFormModal handleClose={handleClose} />}
     </>

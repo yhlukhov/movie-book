@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
+import { useParams, useSearchParams } from 'react-router-dom'
 import { MovieCard } from './MovieCard'
 import { MovieCount } from './MovieCount'
 import { MovieListDiv } from './styled'
@@ -9,16 +10,15 @@ import {
   getMovies,
   searchMovies,
   selectMovies,
-  selectSearchTerm,
-  selectGenre,
-  selectSortBy,
   selectPage,
 } from '../../store/'
 
 export const MovieList = () => {
-  const genre = useSelector(selectGenre)
-  const sortBy = useSelector(selectSortBy)
-  const searchTerm = useSelector(selectSearchTerm)
+  const params = useParams()
+  const [searchParams] = useSearchParams()
+  const genre = searchParams.get('genre')
+  const sortBy = searchParams.get('sortBy')
+  const searchTerm = params.searchTerm
   const movies = useSelector(selectMovies)
   const page = useSelector(selectPage)
   const dispatch = useAppDispatch()
