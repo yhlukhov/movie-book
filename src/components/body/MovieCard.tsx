@@ -1,5 +1,5 @@
 import { FC, useState } from 'react'
-import { getMovie, useAppDispatch } from '../../store'
+import {createSearchParams, useSearchParams} from 'react-router-dom'
 import {ContextMenu, MovieFormModal,DeleteMovieModal}  from './modals/'
 import { MovieType } from '../../types'
 import { MovieCardDiv } from './styled'
@@ -12,17 +12,22 @@ export const MovieCard: FC<PropsType> = ({ movie }) => {
   const [contextOpen, setContextOpen] = useState(false)
   const [formOpen, setFormOpen] = useState(false)
   const [deleteOpen, setDeleteOpen] = useState(false)
-  const dispatch = useAppDispatch()
+  const [searchParams, setSearchParams] = useSearchParams()
   const {id, title, genres, release_date, vote_average, poster_path } = movie
   const movieGenre = genres.join(', ')
   const movieYear = release_date ? new Date(release_date).getFullYear() : ''
+
+
+
 
   return (
     <MovieCardDiv>
       <div
         className='picture'
         onClick={() => {
-          dispatch(getMovie(id))
+          const sp = createSearchParams(searchParams)
+          sp.set('movieId', id)
+          setSearchParams(sp)
           window.scrollTo(0, 0)
         }}
       >

@@ -1,5 +1,4 @@
-import { useSelector } from 'react-redux'
-import { useAppDispatch, selectMovie, setMovie } from '../../store'
+import { createSearchParams, useSearchParams } from 'react-router-dom'
 import { MovieDescDiv, SearchIco } from './styled'
 import { formatRuntime } from '../../utilities'
 import { MovieType } from '../../types'
@@ -11,8 +10,13 @@ type MovieDetailsProps = {
 }
 
 const MovieDetails:FC<MovieDetailsProps> = ({movie}) => {
-  const dispatch = useAppDispatch()
+  const [searchParams, setSearchParams] = useSearchParams()
   const getYear = (movie:MovieType) => movie.release_date ? new Date(movie.release_date).getFullYear() : ''
+  const openSearchView = () => {
+    const params = createSearchParams(searchParams)
+    params.delete('movieId')
+    setSearchParams(params)
+  }
 
   return (
     <MovieDescDiv>
@@ -20,7 +24,7 @@ const MovieDetails:FC<MovieDetailsProps> = ({movie}) => {
       <div className='desc-top'>
         <Logo />
         <div className='desc-top-right'>
-          <SearchIco onClick={() => dispatch(setMovie(null))} />
+          <SearchIco onClick={openSearchView} />
         </div>
       </div>
       <div className='movie-details'>

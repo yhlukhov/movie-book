@@ -3,7 +3,7 @@ import { GenreType, SortTypes } from '../types'
 import { RootState } from './store'
 
 const initialState = {
-  sortBy: 'release_date' as SortTypes,
+  sortBy: 'vote_average' as SortTypes,
   genre:'all' as GenreType|'all',
   searchInput:'',
   searchTerm: '',
