@@ -30,7 +30,7 @@ export const MovieList = () => {
   return (
     <>
       <MovieCount />
-      <MovieListDiv>
+      <MovieListDiv data-testid='movie-list'>
         {movies.map((movie) => (
           <MovieCard movie={movie} key={movie.id} />
         ))}

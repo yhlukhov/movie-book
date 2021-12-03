@@ -19,7 +19,7 @@ export const Header = () => {
   }
   return (
     <>
-    <HeaderDiv>
+    <HeaderDiv data-testid='header'>
       <div className='header-top'>
         <Logo />
         <div className='header-top-right'>

@@ -2,7 +2,7 @@ import {createSlice, PayloadAction} from '@reduxjs/toolkit'
 import { GenreType, SortTypes } from '../types'
 import { RootState } from './store'
 
-const initialState = {
+export const initialState = {
   sortBy: 'vote_average' as SortTypes,
   genre:'all' as GenreType|'all',
   searchInput:'',

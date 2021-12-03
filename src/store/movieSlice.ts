@@ -14,6 +14,8 @@ const initialState = {
   page: 1,
 }
 
+export type MovieState = typeof initialState
+
 // Movie Reducer Slice
 export const movieSlice = createSlice({
   name: 'movies',

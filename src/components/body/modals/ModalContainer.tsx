@@ -34,7 +34,7 @@ export const ModalContainer: FC<PropsType> = ({ title, handleClose, children }) 
     <ModalContainerDiv ref={modalRef} onClick={(e) => onClose(e)}>
       <ModalDiv>
         <h2>{title}</h2>
-        <CloseBtn onClick={() => handleClose()} />
+        <CloseBtn onClick={() => handleClose()} data-testid='close-modal-btn' />
         {children}
       </ModalDiv>
     </ModalContainerDiv>

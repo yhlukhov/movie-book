@@ -3,7 +3,7 @@ import { FooterDiv } from './styled'
 
 export const Footer = () => {
   return(
-    <FooterDiv>
+    <FooterDiv data-testid='footer'>
       <Logo />
     </FooterDiv>
   )

@@ -17,19 +17,18 @@ export const MovieCard: FC<PropsType> = ({ movie }) => {
   const movieGenre = genres.join(', ')
   const movieYear = release_date ? new Date(release_date).getFullYear() : ''
 
-
-
+  const handleClick = () => {
+    const sp = createSearchParams(searchParams)
+    sp.set('movieId', id)
+    setSearchParams(sp)
+    window.scrollTo(0, 0)
+  }
 
   return (
-    <MovieCardDiv>
+    <MovieCardDiv data-testid='movie-card'>
       <div
         className='picture'
-        onClick={() => {
-          const sp = createSearchParams(searchParams)
-          sp.set('movieId', id)
-          setSearchParams(sp)
-          window.scrollTo(0, 0)
-        }}
+        onClick={handleClick}
       >
         <img src={poster_path} alt={title} />
       </div>

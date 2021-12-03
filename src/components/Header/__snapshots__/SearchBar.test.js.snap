@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Search Bar Rendres correctly 1`] = `
+Array [
+  <div
+    className="sc-jSgvzq kopskl"
+  >
+    Find your movie
+  </div>,
+  <form
+    className="sc-gKseQn iDZLLA"
+    data-testid="search-form"
+    onSubmit={[Function]}
+  >
+    <label>
+      <input
+        className="sc-iBPTik fQCWZd"
+        onChange={[Function]}
+        placeholder="What do you want to watch?"
+        type="text"
+        value=""
+      />
+      
+    </label>
+    <button
+      className="sc-fubCzh fZjCWK"
+    >
+      Search
+    </button>
+  </form>,
+]
+`;

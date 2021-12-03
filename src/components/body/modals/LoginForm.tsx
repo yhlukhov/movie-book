@@ -20,7 +20,7 @@ export const LoginForm: FC<LoginFormProps> = () => {
       }}
     >
       {({handleReset})=>(
-        <StyledForm>
+        <StyledForm  data-testid='login-modal'>
         <TextField type='text' label='User id*' name='login' placeholder='user2021@email.com' />
         <TextField type='password' label='Password*' name='password' placeholder='********' />
         <div className='control-area'>
