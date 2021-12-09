@@ -48,7 +48,7 @@ export const SearchBar:FC<SearchBarProps> = ({searchQuery}) => {
   return (
     <>
       <Title>Find your movie</Title>
-      <Form onSubmit={handleSearch}>
+      <Form data-testid='search-form' onSubmit={handleSearch}>
         <label>
           <SearchInput
             type='text'

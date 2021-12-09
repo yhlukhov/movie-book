@@ -1,12 +1,12 @@
-import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
 import { PageNotFound } from './components/common/PageNotFound'
 import { AppDiv, GlobalStyle } from './styled'
 import Content from './components/Content';
 
 export const App = () => {
   return (
-    <BrowserRouter>
-      <AppDiv>
+    <Router>
+      <AppDiv data-testid='app'>
         <Routes>
           <Route path='/' element={<Navigate to='/search' />} />
           <Route path='/search' element={<Content />} />
@@ -16,6 +16,6 @@ export const App = () => {
         </Routes>
       </AppDiv>
       <GlobalStyle />
-    </BrowserRouter>
+    </Router>
   )
 }

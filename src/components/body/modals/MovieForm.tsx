@@ -52,7 +52,7 @@ export const MovieForm: FC<PropsType> = ({ movie, handleClose }) => {
       onSubmit={(values) => handleSubmit(values as MovieFormData)}
     >
       {({ handleReset }) => (
-        <StyledForm>
+        <StyledForm data-testid='add-movie-modal'>
           <div className='input-area'>
             <div className='left-side'>
               <SelectArea

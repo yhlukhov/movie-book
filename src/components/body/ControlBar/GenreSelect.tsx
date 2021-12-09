@@ -39,5 +39,5 @@ export const GenreSelect = () => {
       </GenreItemLabel>
     ))
 
-  return <GenreSelectDiv>{renderGenreSelect(['all', ...genreList])}</GenreSelectDiv>
+  return <GenreSelectDiv data-testid='genre-select'>{renderGenreSelect(['all', ...genreList])}</GenreSelectDiv>
 }
